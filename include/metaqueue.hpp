@@ -365,7 +365,7 @@ namespace QueueMetafunctions
             int nbytes;
             if (timeout_seconds == -1)
             {
-                return pop_impl<value_type, value_size, true, true>::wait(queue_fd, buffer, buffer_size, timeout_seconds, priority);
+                return pop_impl<value_type, value_size, true, true>::wait(queue_fd, buffer, buffer_size, priority);
             }
             else
             {
@@ -402,7 +402,7 @@ namespace QueueMetafunctions
             int nbytes;
             if (timeout_seconds == -1)
             {
-                return pop_impl<value_type, value_size, true, false>::wait(queue_fd, buffer, buffer_size, timeout_seconds, priority);
+                return pop_impl<value_type, value_size, true, false>::wait(queue_fd, buffer, buffer_size, priority);
             }
             else
             {
@@ -614,7 +614,7 @@ public:
      * @param priority Priority of the message.
      * @return value_type Returns the datatype given in the template, the value is valid if and only if the method was_dequeued() returns true.
      */
-    value_type dequeue(int timeout = -1, unsigned int priority = 0)
+    value_type read(int timeout = -1, unsigned int priority = 0)
     {
         return pop(timeout, priority);
     }
